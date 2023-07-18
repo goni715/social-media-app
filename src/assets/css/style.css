@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+html,
+body,
+#root,
+.app {
+    height: 100%;
+    width: 100%;
+    font-family: "Rubik", sans-serif;
+}
+
+.PostImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.add-comment-btn{
+    padding: 9px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    margin-left: 39px;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+
+.comment-input{
+    padding:5px;
+    margin-left: 10px;
+    border: none;
+
+}
+
+.reply-btn{
+
+}
+
+
+.ant-btn.css-dev-only-do-not-override-14wwjjs.ant-btn-default {
+    display: none !important;
+}
+
+.ant-btn.css-dev-only-do-not-override-14wwjjs.ant-btn-primary {
+    display: none !important;
+}
+
+.button:disabled{
+    color: rgba(0, 0, 0, 0.87) !important;
+    background-color: #00D5FA !important;
+}
+
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border:none;
+    border-radius: 0.5rem;
+    background: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);;
+    transition:all 100ms ease-out;
+}
+
+.button:hover{
+    cursor: pointer;
+    color: #fca61f;
+    background: transparent;
+    border: 2px solid #fca61f;
+}
+
+.SubPostContainer{
+    width: 93%;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+.PostImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.PostImages{
+    width: 500px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.iconsforPost{
+    width: 20px;
+
+}
+
+.moreicons{
+    width: 20px;
+    margin-left: 380px;
+}
+
+.commentinput{
+    width: 24pc;
+    margin-left: 10px;
+    border: none;
+
+}
+.addCommentbtn{
+    padding: 9px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    margin-left: 39px;
+    cursor: pointer;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+
+.replies-btn{
+    text-transform: capitalize;
+}
+
+/* */
+.my-badge{
+    left: 17px;
+    top: -13px;
+}
+
+.request:hover{
+    cursor: pointer;
+}
+
+.button-close{
+    right: -24px;
+    top: 4px;
+}
