@@ -7,14 +7,14 @@ import {
     ShowPostLoading, ShowUploadLoading
 } from "../redux/state-slice/settingsSlice.js";
 import axios from "axios";
-import {ErrorToast, SuccessToast} from "../helper/ValidationHelper.js";
+import {ErrorToast} from "../helper/ValidationHelper.js";
 import {getToken} from "../helper/SessionHelper.js";
 import {
     SetPostDesc, SetPostImage,
     SetSinglePost,
     SetTimelinePosts
 } from "../redux/state-slice/postSlice.js";
-const BaseURL = "http://localhost:5000/api/post";
+import {BaseURL} from "../helper/config.js";
 const AxiosHeader={headers:{"token":getToken()}}
 
 
@@ -25,7 +25,7 @@ export async function CreatePostRequest(Description, Image){
 
     try{
         store.dispatch(ShowUploadLoading())
-        let URL = BaseURL+"/create-post";
+        let URL = BaseURL+"/post/create-post";
         let PostBody={
             desc: Description,
             image: Image
@@ -62,7 +62,7 @@ export async function UpdatePostRequest(PostBody, ObjectID){
 
     try{
        // store.dispatch(ShowUploadLoading())
-        let URL = BaseURL+"/update-post/"+ObjectID;
+        let URL = BaseURL+"/post/update-post/"+ObjectID;
         let res =await axios.put(URL,PostBody, AxiosHeader)
         store.dispatch(HideUploadLoading())
         if(res.status === 200) {
@@ -97,7 +97,7 @@ export async function UpdatePostRequest(PostBody, ObjectID){
 export async function GetTimelinePostsRequest() {
     try {
         store.dispatch(ShowPostLoading())
-        let URL = BaseURL+"/get-timeline-posts";
+        let URL = BaseURL+"/post/get-timeline-posts";
 
         const res = await axios.get(URL,AxiosHeader)
         store.dispatch(HidePostLoading())
@@ -127,7 +127,7 @@ export async function GetTimelinePostsRequest() {
 export async function GetUserPostsRequest(ObjectID) {
     try {
         store.dispatch(ShowPostLoading())
-        let URL = BaseURL+"/get-user-posts/"+ObjectID;
+        let URL = BaseURL+"/post/get-user-posts/"+ObjectID;
 
         const res = await axios.get(URL,AxiosHeader)
         store.dispatch(HidePostLoading())
@@ -156,7 +156,7 @@ export async function GetUserPostsRequest(ObjectID) {
 export async function GetPostRequest(ObjectID) {
     try {
         //store.dispatch(ShowPostLoading())
-        let URL = BaseURL+"/get-post/"+ObjectID;
+        let URL = BaseURL+"/post/get-post/"+ObjectID;
 
         const res = await axios.get(URL,AxiosHeader)
         //store.dispatch(HidePostLoading())
@@ -194,7 +194,7 @@ export async function LikeDislikePostRequest(PostID) {
 
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/like-dislike-post";
+        let URL = BaseURL+"/post/like-dislike-post";
         let PostBody = {postID: PostID}
         const res = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -235,7 +235,7 @@ export async function CommentPostRequest(Comment,PostID) {
 
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/comment-post";
+        let URL = BaseURL+"/post/comment-post";
         let PostBody = {
             comment: Comment,
             postID: PostID
@@ -276,7 +276,7 @@ export async function ReplyPostRequest(Text,CommentID,PostID) {
 
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/reply-post";
+        let URL = BaseURL+"/post/reply-post";
         let PostBody = {
             postID: PostID,
             commentID: CommentID,

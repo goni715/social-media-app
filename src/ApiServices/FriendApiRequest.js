@@ -7,11 +7,10 @@ import {
     ShowLoading,
 } from "../redux/state-slice/settingsSlice.js";
 import axios from "axios";
-import {SetTimelinePosts} from "../redux/state-slice/postSlice.js";
-import {ErrorToast, SuccessToast} from "../helper/ValidationHelper.js";
+import {ErrorToast} from "../helper/ValidationHelper.js";
 import {getToken} from "../helper/SessionHelper.js";
 import {SetFriendRequests, SetFriends, SetTotalFriendRequests} from "../redux/state-slice/friendSlice.js";
-const BaseURL = "http://localhost:5000/api/user";
+import {BaseURL} from "../helper/config.js";
 const AxiosHeader={headers:{"token":getToken()}}
 
 
@@ -21,7 +20,7 @@ export async function GetFriends(userId) {
 
     try {
         store.dispatch(ShowLoading())
-        let URL = BaseURL+"/get-friends/"+userId;
+        let URL = BaseURL+"/user/get-friends/"+userId;
 
         const res = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoading())
@@ -49,7 +48,7 @@ export async function GetFriendRequests() {
 
     try {
         store.dispatch(ShowLoading())
-        let URL = BaseURL+"/get-friend-requests";
+        let URL = BaseURL+"/user/get-friend-requests";
 
         const res = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoading())
@@ -80,7 +79,7 @@ export async function AddCancelFriendRequest(FriendID) {
 
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/add-cancel-friend-request";
+        let URL = BaseURL+"/user/add-cancel-friend-request";
         let PostBody = {friendID: FriendID}
         const res = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -117,7 +116,7 @@ export async function UnfriendRequest(FriendID) {
 
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/unfriend-user";
+        let URL = BaseURL+"/user/unfriend-user";
         let PostBody = {friendID: FriendID}
         const res = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -155,7 +154,7 @@ export async function ConfirmFriendRequest(FriendID) {
 
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/confirm-friend-request";
+        let URL = BaseURL+"/user/confirm-friend-request";
         let PostBody = {friendID: FriendID}
         const res = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -191,7 +190,7 @@ export async function DeleteFriendRequest(FriendID) {
 
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/delete-friend-request";
+        let URL = BaseURL+"/user/delete-friend-request";
         let PostBody = {friendID: FriendID}
         const res = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())

@@ -2,17 +2,15 @@ import axios from "axios";
 import {ErrorToast, SuccessToast} from "../helper/ValidationHelper";
 import store from "../redux/store/store";
 import {getToken, setToken, setUserDetails} from "../helper/SessionHelper";
-import {HideLoader, HideLoading, ShowLoader, ShowLoading} from "../redux/state-slice/settingsSlice";
+import {HideLoader, HideLoading, ShowLoader} from "../redux/state-slice/settingsSlice";
 import {
-    SetCoverPicture,
     SetEmail,
     SetFirstName,
     SetLastName, SetLocation,
-    SetMyFollowers,
-    SetMyFollowing, SetOccupation, SetProfilePicture, SetUsers
+    SetOccupation, SetProfilePicture, SetUsers
 } from "../redux/state-slice/profileSlice.js";
-const BaseURL = "http://localhost:5000/api/auth";
-const BaseURL2 = "http://localhost:5000/api/user";
+import {BaseURL} from "../helper/config.js";
+
 
 const AxiosHeader={headers:{"token":getToken()}}
 
@@ -24,7 +22,7 @@ export async function RegisterRequest(Email,FirstName,LastName,Location, Occupti
 
     try{
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/Registration";
+        let URL = BaseURL+"/auth/Registration";
         let PostBody={
             email:Email,
             firstName:FirstName,
@@ -69,7 +67,7 @@ export async function LoginRequest(email,password){
         //debugger;
         store.dispatch(ShowLoader())
         //debugger;
-        let URL=BaseURL+"/Login";
+        let URL=BaseURL+"/auth/Login";
         //debugger;
         let PostBody={"email":email,"password":password}
         //debugger;
@@ -117,7 +115,7 @@ export async function LoginRequest(email,password){
 export async function GetUserRequest(ObjectID){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL2+"/get-user/"+ObjectID;
+        let URL=BaseURL+"/user/get-user/"+ObjectID;
         let res=await axios.get(URL,AxiosHeader);
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -154,7 +152,7 @@ export async function GetAllUsersRequest() {
 
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/get-all-users";
+        let URL = BaseURL+"/user/get-all-users";
         const res = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
 

@@ -4,14 +4,14 @@ import axios from "axios";
 import {ErrorToast, SuccessToast} from "../helper/ValidationHelper.js";
 import {getToken} from "../helper/SessionHelper.js";
 import {SetFollowers, SetFollowing} from "../redux/state-slice/followSlice.js";
-const BaseURL = "http://localhost:5000/api/user";
+import {BaseURL} from "../helper/config.js";
 const AxiosHeader={headers:{"token":getToken()}}
 
 export async function GetFollowersRequest() {
 
     try {
         store.dispatch(ShowLoading())
-        let URL = BaseURL+"/get-followers";
+        let URL = BaseURL+"/user/get-followers";
 
         const res = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoading())
@@ -40,7 +40,7 @@ export async function GetFollowingRequest() {
 
     try {
         store.dispatch(ShowLoading())
-        let URL = BaseURL+"/get-following";
+        let URL = BaseURL+"/user/get-following";
 
         const res = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoading())
@@ -69,7 +69,7 @@ export async function FollowRequest(FollowUserID) {
 
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/follow-user";
+        let URL = BaseURL+"/user/follow-user";
         let PostBody = {followUserID: FollowUserID}
         const res = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
