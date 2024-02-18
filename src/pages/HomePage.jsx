@@ -1,6 +1,7 @@
-import React, {Suspense} from 'react';
+import React, {Suspense, useEffect, useState} from 'react';
 import Navbar from "../components/Navbar/Navbar";
 import {Box} from "@mui/material";
+
 const Home = React.lazy(() => import('../components/Home/Home.jsx'));
 
 const HomePage = () => {

@@ -1,8 +1,15 @@
-import React, {useState} from 'react';
+import  {useEffect, useState} from 'react';
 import profilePic from '../../assets/images/p2.jpeg'
 import {ConfirmFriendRequest, DeleteFriendRequest} from "../../ApiServices/FriendApiRequest.js";
+import {io} from "socket.io-client";
 
 const Request = ({item}) => {
+    const [socket, setSocket] = useState(null);
+
+    useEffect(()=> {
+        const socketInstance = io('https://social-media-api-goni.vercel.app/api');
+        setSocket(socketInstance);
+    },[]);
 
      const [confirm, setConfirm] = useState(false)
      const [deleted, setDeleted] = useState(false)
@@ -10,12 +17,15 @@ const Request = ({item}) => {
     const Confirm = async (friendID) => {
          setConfirm((prev) => !prev);
          await ConfirmFriendRequest(friendID);
+         socket.emit('confirm-request', "confirm-request");
     }
 
     const Delete = async (friendID) => {
          setDeleted((prev) => !prev);
          await DeleteFriendRequest(friendID);
+         socket.emit('confirm-request', "confirm-request");
     }
+
 
 
 

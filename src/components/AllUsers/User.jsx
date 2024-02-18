@@ -1,11 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import profilePic from '../../assets/images/p2.jpeg'
 import {getUserDetails} from "../../helper/SessionHelper.js";
 import {SuccessToast} from "../../helper/ValidationHelper.js";
 import {AddCancelFriendRequest, UnfriendRequest} from "../../ApiServices/FriendApiRequest.js";
 import {useNavigate} from "react-router-dom";
+import {io} from "socket.io-client";
 
 const User = ({item}) => {
+    const [socket, setSocket] = useState(null);
+
+    useEffect(()=> {
+        const socketInstance = io('https://social-media-api-goni.vercel.app/api');
+        setSocket(socketInstance);
+    },[]);
+
 
     let currentUserId = getUserDetails()['id'];
     const navigate =useNavigate();
@@ -16,6 +24,7 @@ const User = ({item}) => {
     const AddCancelFriend = async (friendID) => {
         setFriendRequests((prev) => !prev);
         await AddCancelFriendRequest(friendID);
+        socket.emit('confirm-request', "confirm-request");
     }
 
 
@@ -23,6 +32,7 @@ const User = ({item}) => {
     const Unfriend = async (friendID) => {
         setAlreadyFriend((prev) => !prev);
         await UnfriendRequest(friendID);
+        socket.emit('confirm-request', "confirm-request");
     }
 
 

@@ -9,8 +9,8 @@ import {ErrorToast} from "../helper/ValidationHelper";
 import axios from "axios";
 import {getToken, setUserDetails} from "../helper/SessionHelper.js";
 import {BaseURL} from "../helper/config.js";
-//const AxiosHeader={headers:{"Content-Type": "multipart/form-data"}}
-const AxiosHeader={headers:{"token":getToken()}}
+const AxiosHeader={headers:{"Content-Type": "multipart/form-data", "token":getToken()}}
+//const AxiosHeader={headers:{"token":getToken()}}
 
 
 
@@ -46,8 +46,15 @@ export async function UploadProfilePictureRequest(FormData) {
     try {
         store.dispatch(ShowLoading())
         let URL = BaseURL+"/upload/upload-profile-picture";
+        alert(JSON.stringify(FormData))
 
-        const res = await axios.post(URL,FormData, AxiosHeader)
+        const res = await axios.post(URL,FormData,
+            {
+                headers:{
+                    'Content-Type': "multipart/form-data",
+                    token:getToken()
+                }
+            })
         store.dispatch(HideLoading())
         if(res.status === 200) {
             //SuccessToast("Picture upload Success");
@@ -67,7 +74,7 @@ export async function UploadProfilePictureRequest(FormData) {
         //alert(JSON.stringify(e))
         store.dispatch(HideLoading())
         ErrorToast("Something Went Wrong")
-        alert(JSON.stringify(e))
+        alert(JSON.stringify(e.response))
         ErrorToast(1)
     }
 }
@@ -79,7 +86,7 @@ export async function CreatePostWithImageRequest(FormData) {
         store.dispatch(ShowUploadLoading())
         let URL = BaseURL+"/post/create-post-with-image";
 
-        const res = await axios.post(URL,FormData, AxiosHeader)
+        const res = await axios.post(URL,FormData, {headers:{"Content-Type": "multipart/form-data", "token":getToken()}})
         store.dispatch(HideUploadLoading())
         if(res.status === 200) {
             //SuccessToast("Post Upload Success");

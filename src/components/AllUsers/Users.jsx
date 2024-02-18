@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {selectLoading} from "../../redux/state-slice/settingsSlice.js";
 import {GetAllUsersRequest} from "../../ApiServices/UserApiRequest.js";
@@ -9,11 +9,10 @@ import {selectFriendRequests} from "../../redux/state-slice/friendSlice.js";
 import {selectUsers} from "../../redux/state-slice/profileSlice";
 import WidgetWrapper from "../WidgetWrapper.jsx";
 import {Box, Typography, useTheme} from "@mui/material";
+import {io} from "socket.io-client";
 
 const Users = () => {
     const { palette } = useTheme();
-
-
 
     useEffect(()=>{
         (async () => {
