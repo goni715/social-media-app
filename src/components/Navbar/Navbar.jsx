@@ -31,6 +31,7 @@ import {SetMode} from "../../redux/state-slice/authSlice";
 import {getUserDetails} from "../../helper/SessionHelper.js";
 import {selectTotalFriendRequests} from "../../redux/state-slice/friendSlice.js";
 import {GetFriendRequests} from "../../ApiServices/FriendApiRequest.js";
+import {io} from "socket.io-client";
 
 
 const Navbar = () => {
@@ -46,6 +47,7 @@ const Navbar = () => {
     const background = theme.palette.background.default;
     const primaryLight = theme.palette.primary.light;
     const alt = theme.palette.background.alt;
+    const socket = io('http://localhost:5000');
 
 
     useEffect(()=>{
@@ -62,6 +64,15 @@ const Navbar = () => {
      localStorage.clear();
      window.location.href="/";
    }
+
+
+    useEffect(()=>{
+        socket.on('success-request', (data) => {
+            (async () => {
+                await GetFriendRequests();
+            })();
+        });
+    },[]);
 
 
 
