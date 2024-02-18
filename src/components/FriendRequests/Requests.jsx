@@ -16,7 +16,7 @@ const Requests = () => {
 
     useEffect(()=> {
 
-        const socketInstance = io('https://social-media-api-goni.vercel.app/api');
+        const socketInstance = io('http://localhost:5000');
         setSocket(socketInstance);
 
         socketInstance.on('connect', () => {
