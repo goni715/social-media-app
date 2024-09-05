@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     Box,
     Button,
@@ -7,10 +6,8 @@ import {
     Typography,
     useTheme,
 } from "@mui/material";
-import {Formik, useFormik} from "formik";
+import {useFormik} from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import {LoginRequest} from "../../ApiServices/UserApiRequest.js";
 
 
@@ -32,8 +29,6 @@ const initialValuesLogin = {
 const Login = ({setIsSignUp}) => {
 
     const { palette } = useTheme();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
     const isNonMobile = useMediaQuery("(min-width:600px)");
 
 

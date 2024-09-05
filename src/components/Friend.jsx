@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
-import { PersonAddOutlined, PersonRemoveOutlined } from "@mui/icons-material";
+import {useState} from 'react';
+import { PersonRemoveOutlined } from "@mui/icons-material";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import FlexBetween from "../components/FlexBetween/FlexBetween";
 import UserImage from "./UserImage";
 import {getUserDetails} from "../helper/SessionHelper.js";
@@ -10,7 +9,6 @@ import {UnfriendRequest} from "../ApiServices/FriendApiRequest.js";
 
 const Friend = ({ friendId, name, subtitle, userPicturePath, userId }) => {
     const navigate = useNavigate();
-    const location = useLocation();
 
     const { palette } = useTheme();
     const [isFriend, setIsFriend] = useState(true);

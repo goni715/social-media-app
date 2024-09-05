@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {Box, IconButton, Typography, useTheme} from "@mui/material";
 import Dropzone from "react-dropzone";
 import FlexBetween from "../FlexBetween/FlexBetween.jsx";

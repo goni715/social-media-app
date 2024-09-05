@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Modal} from "antd";
 import {selectProfilePicModalShow, SetProfilePicModalShow} from "../../redux/state-slice/ModalSlice.js";
 import {useSelector} from "react-redux";

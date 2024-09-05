@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import Register from "./Register.jsx";
 import Login from "./Login.jsx";

@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import pic from "../assets/images/p1.jpeg";
 
 const UserImage = ({ image}) => {
   return (

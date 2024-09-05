@@ -1,4 +1,3 @@
-import React from 'react';
 import {Create} from "@mui/icons-material";
 import {Box, IconButton,Typography, useTheme} from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +14,6 @@ const NameHeading = ({postId, friendId, name, subtitle, userPicturePath }) => {
     const main = palette.neutral.main;
     const medium = palette.neutral.medium;
     const currentUserId = getUserDetails()['id'];
-    const picture = getUserDetails()['picture'];
 
 
 

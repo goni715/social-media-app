@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import profilePic from '../../assets/images/p2.jpeg'
 import {getUserDetails} from "../../helper/SessionHelper.js";
 import {SuccessToast} from "../../helper/ValidationHelper.js";

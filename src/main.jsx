@@ -4,6 +4,7 @@ import App from './App';
 import './assets/css/bootstrap.min.css';
 import './assets/css/style.css';
 import './assets/css/FollowersCard.css'
+import './index.css'
 import {Provider} from "react-redux";
 import store from "./redux/store/store";
 

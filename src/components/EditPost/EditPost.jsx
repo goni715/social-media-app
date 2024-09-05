@@ -1,16 +1,8 @@
-import React, {useEffect} from 'react';
 import {Box, useMediaQuery} from "@mui/material";
 import UserWidget from "../../widgets/UserWidget.jsx";
-import MyPostWidget from "../../widgets/MyPostWidget.jsx";
-import PostsWidget from "../../widgets/PostsWidget.jsx";
 import AdvertWidget from "../../widgets/AdvertWidget.jsx";
-import FriendListWidget from "../../widgets/FriendListWidget.jsx";
 import {getUserDetails} from "../../helper/SessionHelper.js";
 import EditPostBox from "./EditPostBox.jsx";
-import {GetFriendRequests} from "../../ApiServices/FriendApiRequest.js";
-import {GetPostRequest} from "../../ApiServices/PostApiRequest.js";
-import {useSelector} from "react-redux";
-import {selectSinglePost} from "../../redux/state-slice/postSlice.js";
 
 const EditPost = ({id}) => {
 

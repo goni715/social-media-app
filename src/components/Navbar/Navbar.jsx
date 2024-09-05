@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {
     Box,
-    Badge,
     IconButton,
     InputBase,
     Typography,
@@ -9,7 +8,7 @@ import {
     MenuItem,
     FormControl,
     useTheme,
-    useMediaQuery, Link,
+    useMediaQuery,
 } from "@mui/material";
 import {
     Home,
@@ -18,7 +17,6 @@ import {
     DarkMode,
     LightMode,
     Notifications,
-    Help,
     Menu,
     Close,
     Diversity3
@@ -38,14 +36,12 @@ const Navbar = () => {
     const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { palette } = useTheme();
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
     const theme = useTheme();
     const neutralLight = theme.palette.neutral.light;
     const dark = theme.palette.neutral.dark;
     const background = theme.palette.background.default;
-    const primaryLight = theme.palette.primary.light;
     const alt = theme.palette.background.alt;
     const socket = io('http://localhost:5000');
 

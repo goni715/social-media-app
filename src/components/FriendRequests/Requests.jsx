@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {GetTimelinePostsRequest} from "../../ApiServices/PostApiRequest.js";
+import {useEffect, useState} from 'react';
 import {GetFriendRequests} from "../../ApiServices/FriendApiRequest.js";
 import {useSelector} from "react-redux";
 import {selectLoading} from "../../redux/state-slice/settingsSlice.js";

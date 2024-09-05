@@ -1,4 +1,3 @@
-import React  from 'react';
 import {Box, useMediaQuery} from "@mui/material";
 import UserWidget from "../../widgets/UserWidget.jsx";
 import pic from "../../assets/images/p3.jpeg";

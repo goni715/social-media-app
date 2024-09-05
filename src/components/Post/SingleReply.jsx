@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import ReplyUserImage from "../ReplyUserImage.jsx";
 import {Box, InputBase, Typography, useTheme} from "@mui/material";
 import {getUserDetails} from "../../helper/SessionHelper.js";
